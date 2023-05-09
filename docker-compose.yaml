@@ -4,7 +4,7 @@ services:
     build: ./frontend
     ports:
       - "3000:3000"
-    container_name: react-ui
+    container_name: react-uii
     environment:
       - WATCHPACK_POLLING=true
     tty: true
@@ -18,7 +18,7 @@ services:
     build: ./backend
     ports:
       - "5000:5000"
-    container_name: node-api
+    container_name: node-apii
     restart: always
     networks:
       - mern-stack-network
@@ -29,7 +29,7 @@ services:
     image: mongo
     ports:
       - 27017:27017
-    container_name: mongo-db
+    container_name: mongo-dbi
     networks:
       - mern-stack-network
     volumes:
