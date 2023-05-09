@@ -1,10 +1,10 @@
 version: '3'
 services:
-  front:
+  frontend:
     build: ./frontend
     ports:
       - "3000:3000"
-    container_name: react-uii
+    container_name: react-ui
     environment:
       - WATCHPACK_POLLING=true
     tty: true
@@ -14,22 +14,22 @@ services:
     depends_on:
       - backend
 
-  backend:
+  backendd:
     build: ./backend
     ports:
       - "5000:5000"
-    container_name: node-apii
+    container_name: backend
     restart: always
     networks:
       - mern-stack-network
     depends_on:
       - mongo
 
-  mongo:
+  mongoo:
     image: mongo
     ports:
       - 27017:27017
-    container_name: mongo-dbi
+    container_name: mongo-db
     networks:
       - mern-stack-network
     volumes:
