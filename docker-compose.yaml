@@ -1,6 +1,6 @@
 version: '3'
 services:
-  frontend:
+  front-ui:
     build: ./frontend
     ports:
       - "3000:3000"
@@ -12,31 +12,29 @@ services:
     networks:
       - mern-stack-network
     depends_on:
-      - backendd
+      - backend-api
 
-  backendd:
+  backend-api:
     build: ./backend
     ports:
       - "5000:5000"
-    container_name: backend
+    container_name: backend-api
     restart: always
     networks:
       - mern-stack-network
     depends_on:
-      - mongoo
+      - mongodb
 
-  mongoo:
+  mongodb:
     image: mongo
     ports:
       - 27017:27017
-    container_name: mongo-db
+    container_name: mongodb
     networks:
       - mern-stack-network
     volumes:
       - /home/charlestomar0408/mern-dockerized/mongo-backup:/data/db
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=secret
       - MONGO_INITDB_DATABASE=e-commerce
 
 networks:
