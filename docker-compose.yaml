@@ -1,42 +1,39 @@
 version: '3'
 services:
   front:
-    build:
-      context: './frontend'
-      dockerfile: Dockerfile
+    build:./frontend
     ports:
-      - 3000:3000
-    container_name: react-container
+      - "3000:3000"
+    container_name: react-ui
     environment:
       - WATCHPACK_POLLING=true
+    tty: true
+    stdin_open: true
     networks:
       - mern-stack-network
-    volumes:
-      - ./frontend:/app
     depends_on:
       - backend
+
   backend:
-    build:
-      context: './backend'
-      dockerfile: Dockerfile
+    build:./backend
     ports:
-      - 5000:5000
-    container_name: express-container
+      - "5000:5000"
+    container_name: node-api
+    restart: always
     networks:
       - mern-stack-network
-    volumes:
-      - ./backend:/app
     depends_on:
       - mongo
+
   mongo:
     image: mongo
     ports:
       - 27017:27017
-    container_name: mongo-container
+    container_name: mongo-db
     networks:
       - mern-stack-network
     volumes:
-      - mongoData:/data/db
+      - /home/charlestomar0408/mern-dockerized/mongo-backup:/data/db
     environment:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=secret
@@ -44,5 +41,6 @@ services:
 
 networks:
   mern-stack-network:
-volumes:
-  mongoData:
+    driver: bridge
+
+
