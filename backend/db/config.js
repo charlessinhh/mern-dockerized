@@ -1,2 +1,2 @@
 const mongoose = require('mongoose');
-mongoose.connect("mongodb://mongoo:27017/e-commerce");
+mongoose.connect("mongodb://mongo:27017/e-commerce");
