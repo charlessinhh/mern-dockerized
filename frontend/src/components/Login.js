@@ -14,7 +14,7 @@ const Login = () => {
   }, []);
 
   const handleLogin = async () => {
-    let result = await fetch("http://backend:5000/login", {
+    let result = await fetch("http://backendd:5000/login", {
       method: "post",
       body: JSON.stringify({ email, password }),
       headers: {
