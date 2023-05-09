@@ -21,7 +21,7 @@ const AddProduct = () => {
     const userId = user._id;
     console.log(userId);
 
-    let productData = await fetch("http://backend-api:5000/add-product", {
+    let productData = await fetch("/add-product", {
       method: "post",
       body: JSON.stringify({ name, price, category, company, userId }),
       headers: {
