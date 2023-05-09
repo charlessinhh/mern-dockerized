@@ -12,7 +12,7 @@ services:
     networks:
       - mern-stack-network
     depends_on:
-      - backend
+      - backendd
 
   backendd:
     build: ./backend
@@ -23,7 +23,7 @@ services:
     networks:
       - mern-stack-network
     depends_on:
-      - mongo
+      - mongoo
 
   mongoo:
     image: mongo
